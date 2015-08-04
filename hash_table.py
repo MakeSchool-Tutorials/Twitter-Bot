@@ -1,6 +1,6 @@
 # features:
 # - create new hash table
-# - insert key value
+# - set key to value
 # - update key value
 # - get value for key
 # - get list of keys
@@ -11,7 +11,7 @@ class HashTable:
     def __init__(self):
         self.table = []
 
-    def insert(self, key, value):
+    def set(self, key, value):
         new_item = (hash(key), key, value)
         insert_before_index = self.insert_index(new_item)
         self.table.insert(insert_before_index, new_item)

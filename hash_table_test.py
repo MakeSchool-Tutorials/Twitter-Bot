@@ -3,13 +3,13 @@ from hash_table import HashTable
 def test():
     htb = HashTable()
 
-    htb.insert('I', 1)
-    htb.insert('V', 5)
-    htb.insert('X', 10)
-    htb.insert('L', 50)
-    htb.insert('C', 100)
-    htb.insert('D', 500)
-    htb.insert('M', 1000)
+    htb.set('I', 1)
+    htb.set('V', 5)
+    htb.set('X', 10)
+    htb.set('L', 50)
+    htb.set('C', 100)
+    htb.set('D', 500)
+    htb.set('M', 1000)
 
     print(sorted(htb.table) == htb.table)
 
