@@ -29,11 +29,11 @@ class LinkedList:
         return all
 
     def count(self):
+        nonlocal count
         count = 0
-        current = self.head
-        while current:
+        def count_up(node):
             count += 1
-            current = current.next
+        self.walk(count_up)
         return count
 
     def find(self, func):
