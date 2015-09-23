@@ -15,11 +15,21 @@ class HashTable:
         self.num_buckets = num_buckets
         self.buckets = [LinkedList() for i in range(num_buckets)]
 
+    def __setitem__(self, key, value):
+        list = self.buckets[self.index(key)]
+        item = (key, value)
+        list.append(Node(item))
+        return item
+
     def set(self, key, value):
         list = self.buckets[self.index(key)]
         item = (key, value)
         list.append(Node(item))
         return item
+
+    def __getitem__(self, key):
+        node = self.find_node(key)
+        return node and node.value[-1]
 
     def get(self, key):
         node = self.find_node(key)
