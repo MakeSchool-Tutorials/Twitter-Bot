@@ -1,24 +1,14 @@
 class LinkedList:
     def __init__(self):
         self.head = None
-        self.tail = None
 
     def append(self, node):
         if self.head == None:
             self.head = node
-        if self.tail:
-            self.tail.next = node
-            node.prev = self.tail
-        self.tail = node
+        else:
+            last_node = self.last()
+            last_node.next = node
         return node
-
-    def delete(self, node):
-        if self.head == node:
-            self.head = node.next
-        if self.tail == node:
-            self.tail = node.prev
-        node.prev.next = node.next
-        node.next.prev = node.prev
 
     def all(self):
         all = []
@@ -29,9 +19,9 @@ class LinkedList:
         return all
 
     def count(self):
-        nonlocal count
         count = 0
         def count_up(node):
+            nonlocal count
             count += 1
         self.walk(count_up)
         return count
@@ -51,8 +41,13 @@ class LinkedList:
             current = current.next
         return self
 
+    def last(self):
+        last_node = self.head
+        while last_node.next:
+            last_node = last_node.next
+        return last_node
+
 class Node:
-    def __init__(self, value, prev=None, next=None):
+    def __init__(self, value, next=None):
         self.value = value
-        self.prev = prev
         self.next = next
